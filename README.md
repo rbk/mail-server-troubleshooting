@@ -21,5 +21,7 @@ Troubleshoot exim mail delivery failure
 `grep cwd /var/log/exim_mainlog | grep -v /var/spool | awk -F"cwd=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n`
 
 
-## find spamming scripts
-http://help.secureserver.net/article/8537
+# Resources
+
+- http://bradthemad.org/tech/notes/exim_cheatsheet.php
+
