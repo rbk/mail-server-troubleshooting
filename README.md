@@ -23,5 +23,7 @@ Troubleshoot exim mail delivery failure
 
 # Resources
 
+- http://www.cyberciti.biz/faq/exim-remove-all-messages-from-the-mail-queue/
 - http://bradthemad.org/tech/notes/exim_cheatsheet.php
+- http://www.inmotionhosting.com/support/email/exim/find-spam-script-location-with-exim
 
