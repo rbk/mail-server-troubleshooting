@@ -10,8 +10,12 @@ Troubleshoot exim mail delivery failure
 
 # List exim queue
 
-exim -bp
+`exim -bp`
 
 # Clear Exim Queue
 
-exim -bp | awk '/^ *[0-9]+[mhd]/{print "exim -Mrm " $3}' | bash
+`exim -bp | awk '/^ *[0-9]+[mhd]/{print "exim -Mrm " $3}' | bash`
+
+# Find the most used mailing scripts (finally)
+
+`grep cwd /var/log/exim_mainlog | grep -v /var/spool | awk -F"cwd=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n`
