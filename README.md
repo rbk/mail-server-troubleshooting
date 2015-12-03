@@ -4,23 +4,23 @@ Troubleshoot exim mail delivery failure
 
 # Commands
 
-### List exim queue
+##### List exim queue
 
 `exim -bp`
 
-### Clear Exim Queue
+##### Clear Exim Queue
 
 `exim -bp | awk '/^ *[0-9]+[mhd]/{print "exim -Mrm " $3}' | bash`
 
-### Find the most used mailing scripts
+##### Find the most used mailing scripts
 
 `grep cwd /var/log/exim_mainlog | grep -v /var/spool | awk -F"cwd=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n`
 
-### Watch exim log
+##### Watch exim log
 
 `tail -f /var/log/exim_mainlog | grep cwd`
 
-### Clear exim queue
+##### Clear exim queue
 
 `exim -bp | awk '/^ *[0-9]+[mhd]/{print "exim -Mrm " $3}' | bash`
 
