@@ -1,4 +1,4 @@
-# mail-server-troubleshooting (work in progress)
+# Exim Help/Commands 
 Troubleshoot exim mail delivery failure
 
 # Log file locations to check
@@ -8,17 +8,32 @@ Troubleshoot exim mail delivery failure
 
 [http://www.cyberciti.biz/faq/exim-remove-all-messages-from-the-mail-queue/]
 
-# List exim queue
+# Commands
+
+### List exim queue
 
 `exim -bp`
 
-# Clear Exim Queue
+### Clear Exim Queue
 
 `exim -bp | awk '/^ *[0-9]+[mhd]/{print "exim -Mrm " $3}' | bash`
 
-# Find the most used mailing scripts [http://www.inmotionhosting.com/support/email/exim/find-spam-script-location-with-exim]
+### Find the most used mailing scripts [http://www.inmotionhosting.com/support/email/exim/find-spam-script-location-with-exim]
 
 `grep cwd /var/log/exim_mainlog | grep -v /var/spool | awk -F"cwd=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n`
+
+### Watch exim log
+
+`tail -f /var/log/exim_mainlog | grep cwd`
+
+### Clear exim queue
+
+`exim -bp | awk '/^ *[0-9]+[mhd]/{print "exim -Mrm " $3}' | bash`
+
+### Find scripts using mail and count
+
+`grep cwd /var/log/exim_mainlog | grep -v /var/spool | awk -F"cwd=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n`
+
 
 
 # Resources
